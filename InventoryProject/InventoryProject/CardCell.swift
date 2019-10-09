@@ -16,4 +16,6 @@ class CardCell: UITableViewCell {
     func configure(title: String) {
         cardLabel.text = title
     }
+    
+    
 }

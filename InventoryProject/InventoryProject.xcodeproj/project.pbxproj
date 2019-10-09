@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D953453A234CD5840040FFDE /* LoginViewContoroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9534539234CD5840040FFDE /* LoginViewContoroller.swift */; };
+		D953453C234CDC1C0040FFDE /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953453B234CDC1C0040FFDE /* MainNavigationController.swift */; };
 		D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EBF8BF23414E9D00060C9C /* AppDelegate.swift */; };
 		D9EBF8C223414E9D00060C9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EBF8C123414E9D00060C9C /* ViewController.swift */; };
 		D9EBF8C523414E9D00060C9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EBF8C323414E9D00060C9C /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9534539234CD5840040FFDE /* LoginViewContoroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewContoroller.swift; sourceTree = "<group>"; };
+		D953453B234CDC1C0040FFDE /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D9EBF8BC23414E9D00060C9C /* InventoryProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EBF8BF23414E9D00060C9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9EBF8C123414E9D00060C9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 			children = (
 				D9EBF8BF23414E9D00060C9C /* AppDelegate.swift */,
 				D9EBF8C123414E9D00060C9C /* ViewController.swift */,
+				D9534539234CD5840040FFDE /* LoginViewContoroller.swift */,
+				D953453B234CDC1C0040FFDE /* MainNavigationController.swift */,
 				D9EBF8D3234175E700060C9C /* CardCell.swift */,
 				D9EBF8C323414E9D00060C9C /* Main.storyboard */,
 				D9EBF8C623414E9E00060C9C /* Assets.xcassets */,
@@ -138,6 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D953453C234CDC1C0040FFDE /* MainNavigationController.swift in Sources */,
+				D953453A234CD5840040FFDE /* LoginViewContoroller.swift in Sources */,
 				D9EBF8C223414E9D00060C9C /* ViewController.swift in Sources */,
 				D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */,
 				D9EBF8D4234175E700060C9C /* CardCell.swift in Sources */,
@@ -217,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -293,7 +301,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Llama.InventoryProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Llama.InventoryProject1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,7 +319,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Llama.InventoryProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Llama.InventoryProject1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

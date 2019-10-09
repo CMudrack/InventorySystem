@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var CardTableView: UITableView!
-    let dataSet: [String] = ["Test", "Test 2", "Test 3", "Test 4"]
+    var dataSet: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.configure(title: dataSet[indexPath.row])
         return cell
     }
+    
+    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+        print(dataSet[indexPath.row])
+    }
 
+    @IBAction func LogoutTapped(_ sender: Any) {
+         presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func AddItem(_ sender: Any) {
+        dataSet.append("Hello")
+        CardTableView.beginUpdates()
+        CardTableView.insertRows(at: [NSIndexPath(row: dataSet.count-1, section: 0) as IndexPath]  , with: .automatic)
+        CardTableView.endUpdates()
+    }
 }
 
