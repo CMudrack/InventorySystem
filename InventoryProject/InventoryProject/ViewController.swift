@@ -8,7 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataDelegateProtocol {
+    
+    func sendDataToViewController(myData: String) {
+        dataSet.append(myData)
+        CardTableView.beginUpdates()
+        CardTableView.insertRows(at: [NSIndexPath(row: dataSet.count-1, section: 0) as IndexPath]  , with: .automatic)
+        CardTableView.endUpdates()
+    }
+    
+    // Got this code from https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "getDataSegue" {
+            let itemInputVC: ItemInputController = segue.destination as! ItemInputController
+            itemInputVC.delegate = self
+        }
+    }
     
     @IBOutlet weak var CardTableView: UITableView!
     var dataSet: [String] = []
@@ -35,14 +52,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBAction func LogoutTapped(_ sender: Any) {
          presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func AddItem(_ sender: Any) {
-        dataSet.append("Hello")
-        CardTableView.beginUpdates()
-        CardTableView.insertRows(at: [NSIndexPath(row: dataSet.count-1, section: 0) as IndexPath]  , with: .automatic)
-        CardTableView.endUpdates()
     }
 }
 

@@ -57,6 +57,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="L52-Es-LyT" firstAttribute="top" secondItem="1kF-fM-qnY" secondAttribute="top" constant="122" id="4F1-O7-qYx"/>
                             <constraint firstItem="c7J-Sw-u15" firstAttribute="top" secondItem="cbo-UC-ehL" secondAttribute="bottom" constant="100" id="Nw3-3Z-zCG"/>
@@ -70,6 +71,9 @@
                             <constraint firstItem="2WD-1b-P1i" firstAttribute="top" secondItem="c7J-Sw-u15" secondAttribute="bottom" constant="10" id="oW4-lE-5kD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1kF-fM-qnY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CAr-zY-2q6" appends="YES" id="PDv-q1-Ofd"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="d1t-eo-8ei">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="ixF-aH-KtC">
@@ -87,6 +91,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zQ-eR-KAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3uC-AQ-tsq" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="CAr-zY-2q6">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="W2E-bV-qX0" id="NIm-cc-rhN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-907.24637681159425" y="24.776785714285712"/>
         </scene>
@@ -120,6 +129,9 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES"/>
+                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstItem="XGl-I5-1lf" firstAttribute="centerY" secondItem="ife-Ht-uMj" secondAttribute="centerY" id="9N6-QH-XWS"/>
                                                         <constraint firstItem="XGl-I5-1lf" firstAttribute="centerX" secondItem="ife-Ht-uMj" secondAttribute="centerX" id="SIh-ni-8Hy"/>
@@ -159,7 +171,7 @@
                     <navigationItem key="navigationItem" id="05z-x7-fOx">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="SrL-fo-O4U">
                             <connections>
-                                <action selector="AddItem:" destination="BYZ-38-t0r" id="F1U-nW-LUP"/>
+                                <segue destination="MxO-hW-Nrx" kind="show" identifier="getDataSegue" id="Noo-pz-Q69"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="bk5-tP-6kR">
@@ -175,6 +187,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="806" y="25"/>
+        </scene>
+        <!--Item Input Controller-->
+        <scene sceneID="7DP-Ko-G1C">
+            <objects>
+                <viewController id="MxO-hW-Nrx" customClass="ItemInputController" customModule="InventoryProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5hC-Vc-uko">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShW-ny-Tmm">
+                                <rect key="frame" x="184.5" y="175" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-EQ-PDV">
+                                <rect key="frame" x="107" y="221" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ASM-TX-fY4"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IPU-Ps-xCO">
+                                <rect key="frame" x="174.5" y="308" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lFe-Km-feg">
+                                <rect key="frame" x="169.5" y="353" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="X8x-XU-ABD"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7o-YV-V1x">
+                                <rect key="frame" x="176" y="460" width="62" height="30"/>
+                                <state key="normal" title="Add Item"/>
+                                <connections>
+                                    <action selector="AddItemSubmit:" destination="MxO-hW-Nrx" eventType="touchUpInside" id="N8r-Jh-pjz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="ebv-EQ-PDV" firstAttribute="top" secondItem="ShW-ny-Tmm" secondAttribute="bottom" constant="25" id="2yP-Up-q27"/>
+                            <constraint firstItem="IPU-Ps-xCO" firstAttribute="top" secondItem="ebv-EQ-PDV" secondAttribute="bottom" constant="57" id="4fB-GW-7Y9"/>
+                            <constraint firstItem="m7o-YV-V1x" firstAttribute="centerX" secondItem="OoJ-dx-fcg" secondAttribute="centerX" id="CmZ-ir-PLe"/>
+                            <constraint firstItem="lFe-Km-feg" firstAttribute="centerX" secondItem="OoJ-dx-fcg" secondAttribute="centerX" id="Hdy-Pi-0JW"/>
+                            <constraint firstItem="lFe-Km-feg" firstAttribute="top" secondItem="IPU-Ps-xCO" secondAttribute="bottom" constant="24" id="Lob-Gt-kHc"/>
+                            <constraint firstItem="m7o-YV-V1x" firstAttribute="top" secondItem="lFe-Km-feg" secondAttribute="bottom" constant="77" id="VQm-44-3RC"/>
+                            <constraint firstItem="IPU-Ps-xCO" firstAttribute="centerX" secondItem="OoJ-dx-fcg" secondAttribute="centerX" id="ajk-Ke-w1k"/>
+                            <constraint firstItem="ShW-ny-Tmm" firstAttribute="centerX" secondItem="OoJ-dx-fcg" secondAttribute="centerX" id="jYX-4A-cUj"/>
+                            <constraint firstItem="ShW-ny-Tmm" firstAttribute="top" secondItem="OoJ-dx-fcg" secondAttribute="top" constant="87" id="kWS-7u-KEi"/>
+                            <constraint firstItem="ebv-EQ-PDV" firstAttribute="centerX" secondItem="OoJ-dx-fcg" secondAttribute="centerX" id="nPo-52-VGl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OoJ-dx-fcg"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="2z7-bu-8hW" appends="YES" id="M1D-Xl-fuy"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="ItemNameTextField" destination="ebv-EQ-PDV" id="FYt-M6-eUd"/>
+                        <outlet property="ItemQuantityTextField" destination="lFe-Km-feg" id="8pF-X1-PkS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sry-fU-qxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="2z7-bu-8hW">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="MxO-hW-Nrx" id="rh3-7H-HsQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1747.826086956522" y="24.776785714285712"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="iH9-QG-JN4">

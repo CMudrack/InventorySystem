@@ -10,8 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         UserNameTextfield.text = ""
         PasswordTextField.text = ""
     }
@@ -38,6 +37,11 @@ class LoginViewController: UIViewController {
             
             present(MainNavigationController, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        UserNameTextfield.resignFirstResponder()
+        PasswordTextField.resignFirstResponder()
     }
 }
 

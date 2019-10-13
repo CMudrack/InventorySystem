@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9460451234E721800280D77 /* ItemInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9460450234E721800280D77 /* ItemInputController.swift */; };
 		D953453A234CD5840040FFDE /* LoginViewContoroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9534539234CD5840040FFDE /* LoginViewContoroller.swift */; };
 		D953453C234CDC1C0040FFDE /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953453B234CDC1C0040FFDE /* MainNavigationController.swift */; };
 		D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EBF8BF23414E9D00060C9C /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9460450234E721800280D77 /* ItemInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInputController.swift; sourceTree = "<group>"; };
 		D9534539234CD5840040FFDE /* LoginViewContoroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewContoroller.swift; sourceTree = "<group>"; };
 		D953453B234CDC1C0040FFDE /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D9EBF8BC23414E9D00060C9C /* InventoryProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 				D9EBF8C123414E9D00060C9C /* ViewController.swift */,
 				D9534539234CD5840040FFDE /* LoginViewContoroller.swift */,
 				D953453B234CDC1C0040FFDE /* MainNavigationController.swift */,
+				D9460450234E721800280D77 /* ItemInputController.swift */,
 				D9EBF8D3234175E700060C9C /* CardCell.swift */,
 				D9EBF8C323414E9D00060C9C /* Main.storyboard */,
 				D9EBF8C623414E9E00060C9C /* Assets.xcassets */,
@@ -149,6 +152,7 @@
 				D9EBF8C223414E9D00060C9C /* ViewController.swift in Sources */,
 				D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */,
 				D9EBF8D4234175E700060C9C /* CardCell.swift in Sources */,
+				D9460451234E721800280D77 /* ItemInputController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
