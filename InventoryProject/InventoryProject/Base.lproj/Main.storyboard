@@ -188,7 +188,7 @@
             </objects>
             <point key="canvasLocation" x="806" y="25"/>
         </scene>
-        <!--Item Input Controller-->
+        <!--Item Input-->
         <scene sceneID="7DP-Ko-G1C">
             <objects>
                 <viewController id="MxO-hW-Nrx" customClass="ItemInputController" customModule="InventoryProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -253,6 +253,13 @@
                             <outletCollection property="gestureRecognizers" destination="2z7-bu-8hW" appends="YES" id="M1D-Xl-fuy"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Item Input" id="c9o-xM-dfw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="camera" id="ERO-tl-CJs">
+                            <connections>
+                                <segue destination="LAr-Kx-VWs" kind="show" id="VAo-9Q-hPY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ItemNameTextField" destination="ebv-EQ-PDV" id="FYt-M6-eUd"/>
                         <outlet property="ItemQuantityTextField" destination="lFe-Km-feg" id="8pF-X1-PkS"/>
@@ -266,6 +273,22 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1747.826086956522" y="24.776785714285712"/>
+        </scene>
+        <!--Scan QR Code-->
+        <scene sceneID="sjy-8t-GMx">
+            <objects>
+                <viewController id="LAr-Kx-VWs" customClass="QRcodeScanner" customModule="InventoryProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3kO-5v-d4d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Fro-YX-LtV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scan QR Code" id="V7I-mv-jQ4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LWe-Ne-15G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2651" y="25"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="iH9-QG-JN4">

@@ -10,16 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // Function to clear Username and Password fields should user Logout
     override func viewWillAppear(_ animated: Bool) {
         UserNameTextfield.text = ""
         PasswordTextField.text = ""
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        UserNameTextfield.text = ""
-        PasswordTextField.text = ""
-    }
-    
+    //Login Credentials
     // TEMPORARY!! Replace with call to Firebase
     let userDict = [
     "username": "kcardum",
@@ -31,6 +28,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var UserNameTextfield: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     
+    // Validate credentials and advance to ViewController
     @IBAction func SubmitTapped(_ sender: Any) {
         if UserNameTextfield.text == userDict["username"] && PasswordTextField.text == userDict["password"] {
             let MainNavigationController = storyboard?.instantiateViewController(withIdentifier: "MainNavigationController") as! MainNavigationController
@@ -39,6 +37,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // Tap to dismiss keyboard
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         UserNameTextfield.resignFirstResponder()
         PasswordTextField.resignFirstResponder()

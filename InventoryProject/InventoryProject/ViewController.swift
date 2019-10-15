@@ -12,6 +12,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataDelegateProtocol {
     
+    
+     // Function to receive data from ItemInputController and add it to the TableView
     func sendDataToViewController(myData: String) {
         dataSet.append(myData)
         CardTableView.beginUpdates()
@@ -36,20 +38,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
+    //Function to set number of cells in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSet.count
     }
     
+    //Funtion to add CardCell to TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell") as! CardCell
         cell.configure(title: dataSet[indexPath.row])
         return cell
     }
-    
-    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
-        print(dataSet[indexPath.row])
-    }
 
+    // Function to go back to LoginViewController if Logout is tapped
     @IBAction func LogoutTapped(_ sender: Any) {
          presentingViewController?.dismiss(animated: true, completion: nil)
     }

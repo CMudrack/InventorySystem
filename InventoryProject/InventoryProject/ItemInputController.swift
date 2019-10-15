@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Protocol to send data back to ViewController
 protocol DataDelegateProtocol {
     func sendDataToViewController(myData: String)
 }
@@ -17,12 +18,14 @@ class ItemInputController: UIViewController {
         super.viewDidLoad()
     }
     
+    // Delegate to send data back to ViewController
      var delegate: DataDelegateProtocol? = nil
     
     @IBOutlet weak var ItemNameTextField: UITextField!
     @IBOutlet weak var ItemQuantityTextField: UITextField!
     
     
+    // Function to check if ensure required textfields have been filled out and utilizes delegate to send data back to ViewController
     @IBAction func AddItemSubmit(_ sender: Any) {
         
         // Got this code from https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f
@@ -35,7 +38,7 @@ class ItemInputController: UIViewController {
 
     }
     
-    
+    // Tap to dismiss keyboard
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         ItemNameTextField.resignFirstResponder()
         ItemQuantityTextField.resignFirstResponder()
