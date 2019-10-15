@@ -278,7 +278,7 @@
         <scene sceneID="sjy-8t-GMx">
             <objects>
                 <viewController id="LAr-Kx-VWs" customClass="QRcodeScanner" customModule="InventoryProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3kO-5v-d4d">
+                    <view key="view" contentMode="scaleToFill" id="3kO-5v-d4d" customClass="PreviewView" customModule="InventoryProject" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
