@@ -10,43 +10,36 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DataDelegateProtocol {
-    
-    
-     // Function to receive data from ItemInputController and add it to the TableView
-    func sendDataToViewController(myData: String) {
-        dataSet.append(myData)
-        CardTableView.beginUpdates()
-        CardTableView.insertRows(at: [NSIndexPath(row: dataSet.count-1, section: 0) as IndexPath]  , with: .automatic)
-        CardTableView.endUpdates()
-    }
-    
-    // Got this code from https://medium.com/@astitv96/passing-data-between-view-controllers-using-delegate-and-protocol-ios-swift-4-beginners-e32828862d3f 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "getDataSegue" {
-            let itemInputVC: ItemInputController = segue.destination as! ItemInputController
-            itemInputVC.delegate = self
-        }
-    }
-    
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     @IBOutlet weak var CardTableView: UITableView!
-    var dataSet: [String] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if DataStore.sharedInstance.itemAdded == true {
+            CardTableView.beginUpdates()
+            CardTableView.insertRows(at: [NSIndexPath(row: DataStore.sharedInstance.chemNameList.count-1, section: 0) as IndexPath]  , with: .automatic)
+            CardTableView.insertRows(at: [NSIndexPath(row: DataStore.sharedInstance.chemQuantityList.count-1, section: 0) as IndexPath]  , with: .automatic)
+            CardTableView.endUpdates()
+        }
+        DataStore.sharedInstance.itemAdded = false
     }
     
     //Function to set number of cells in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSet.count
+        return DataStore.sharedInstance.chemNameList.count
     }
     
     //Funtion to add CardCell to TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cardCell") as! CardCell
-        cell.configure(title: dataSet[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChemCell", for: indexPath)
+        cell.textLabel?.text = DataStore.sharedInstance.chemNameList[indexPath.row]
         return cell
     }
 
