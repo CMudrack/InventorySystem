@@ -16,7 +16,8 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var camera: AVCaptureDevice?
-    var cameraCaptureOutput: AVCapturePhotoOutput?
+    var cameraCaptureOutput: AVCaptureMetadataOutput?
+    var qrCodeFrameView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +55,25 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         do{
             let cameraCaptureInput = try AVCaptureDeviceInput(device: camera!)
-                cameraCaptureOutput = AVCapturePhotoOutput()
-            
+            cameraCaptureOutput = AVCaptureMetadataOutput()
             captureSession.addInput(cameraCaptureInput)
             captureSession.addOutput(cameraCaptureOutput!)
+            
+            cameraCaptureOutput?.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            cameraCaptureOutput?.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         } catch {
             print(error.localizedDescription)
         }
+        
+         // Initialize QR Code Frame to highlight the QR code
+         qrCodeFrameView = UIView()
+
+         if let qrCodeFrameView = qrCodeFrameView {
+             qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+             qrCodeFrameView.layer.borderWidth = 2
+             view.addSubview(qrCodeFrameView)
+             view.bringSubviewToFront(qrCodeFrameView)
+         }
         
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -70,4 +83,28 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         captureSession.startRunning()
     }
     
+    // Got function from https://www.appcoda.com/intermediate-swift-tips/qrcode-reader.html
+    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        // Check if the metadataObjects array is not nil and it contains at least one object.
+        if metadataObjects.count == 0 {
+            qrCodeFrameView?.frame = CGRect.zero
+            return
+        }
+
+        // Get the metadata object.
+        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+        
+        // Counter to ensure qrCode variable only gets set once
+        
+        if metadataObj.type == AVMetadataObject.ObjectType.qr {
+            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.frame = barCodeObject!.bounds
+            
+            
+            DataStore.sharedInstance.qrCodeInput = metadataObj.stringValue!
+            _ = navigationController?.popViewController(animated: true)
+        }
+    }
 }

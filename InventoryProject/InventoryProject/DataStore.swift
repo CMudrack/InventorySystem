@@ -15,7 +15,17 @@ class DataStore {
         return instance
     }()
    
+    // Variable to facilitate data transfer from ItemInputController to ViewController
     var itemAdded = false
+    
+    // Variable to hold data from QRCode Scanner
+    var qrCodeInput: String = "" {
+        didSet {
+            print("\(qrCodeInput)")
+        }
+    }
+    // Dictionary to hold keyvalue pares for QR Codes
+    var qrDict: [Int: String] = [:]
     
     // Temporary list. Will be changed to Firebase 
     var chemNameList: [String] = [] {
@@ -28,5 +38,7 @@ class DataStore {
             itemAdded = true
         }
     }
+    
+    
     
 }
