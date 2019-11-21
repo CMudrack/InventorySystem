@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class DataStore {
     
@@ -14,6 +15,9 @@ class DataStore {
         let instance = DataStore()
         return instance
     }()
+    
+    // FireBase Realtime Database reference
+    var ref: DatabaseReference! = Database.database().reference()
    
     // Variable to facilitate data transfer from ItemInputController to ViewController
     var itemAdded = false
@@ -31,6 +35,11 @@ class DataStore {
     var chemNameList: [String] = [] {
         didSet {
             itemAdded = true
+            //ref.child("Chemicals").setValue(chemNameList)
+            guard let key = ref.child("Chemicals").childByAutoId().key else {return}
+            let addedChemical = [chemNameList.last : chemQuantityList.last]
+            let childUpdates = ["/Chemicals/\(key)": addedChemical]
+            ref.updateChildValues(childUpdates)
         }
     }
     var chemQuantityList: [Int] = [] {
@@ -40,5 +49,17 @@ class DataStore {
     }
     
     
-    
+    func configure() {
+        let chemicalRef = ref.child("Chemicals")
+        chemicalRef.observe(.value) { (snap) in
+//            if let chemDict = snap.value {
+//                print("App starting. Here's the Firebase value: \(chemDict)")
+//            }
+            for child in snap.children {
+                print("this is a child: \(child)")
+                guard let key = self.ref.child("Chemicals").childByAutoId().key else {return}
+                
+            }
+        }
+    }
 }

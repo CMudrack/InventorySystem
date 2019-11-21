@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var CardTableView: UITableView!
@@ -21,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if DataStore.sharedInstance.itemAdded == true {
             CardTableView.beginUpdates()
             CardTableView.insertRows(at: [NSIndexPath(row: DataStore.sharedInstance.chemNameList.count-1, section: 0) as IndexPath]  , with: .automatic)
@@ -46,6 +44,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // Function to go back to LoginViewController if Logout is tapped
     @IBAction func LogoutTapped(_ sender: Any) {
          presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // Segue to send information to DetailViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        guard identifier == "showDetail" else {
+            return
+        }
+        
+        let detailViewController = segue.destination as! DetailViewController
+        
+        guard let indexPath = CardTableView.indexPathForSelectedRow else {
+            return
+        }
+        
+        let name = DataStore.sharedInstance.chemNameList[indexPath.row]
+        let quantity = DataStore.sharedInstance.chemQuantityList[indexPath.row]
+        
+        detailViewController.chemicalName = name
+        detailViewController.chemicalQuantity = "\(quantity)"
     }
 }
 
