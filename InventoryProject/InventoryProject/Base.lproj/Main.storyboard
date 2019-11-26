@@ -164,7 +164,7 @@
             </objects>
             <point key="canvasLocation" x="805.79710144927537" y="24.776785714285712"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Title-->
         <scene sceneID="IPQ-k2-b1e">
             <objects>
                 <viewController id="yfR-LG-RM6" customClass="DetailViewController" customModule="InventoryProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -234,7 +234,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QIU-Qd-v5I"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zgS-w3-TLy"/>
+                    <navigationItem key="navigationItem" title="Title" id="MMk-Fd-8NP">
+                        <barButtonItem key="rightBarButtonItem" title="Delete" id="hMV-Re-hzo">
+                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="yfR-LG-RM6" id="XPP-ac-OgV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chemNameLabel" destination="bT4-w6-2VX" id="HSi-9J-3da"/>
                         <outlet property="chemNameText" destination="Rv4-YO-Xwo" id="7VA-YK-uQX"/>
@@ -385,6 +392,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qlY-YC-D5w"/>
+        <segue reference="K84-VD-9Uf"/>
     </inferredMetricsTieBreakers>
 </document>
