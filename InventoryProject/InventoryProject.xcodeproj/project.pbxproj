@@ -21,6 +21,7 @@
 		D9EBF8C523414E9D00060C9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EBF8C323414E9D00060C9C /* Main.storyboard */; };
 		D9EBF8C723414E9E00060C9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EBF8C623414E9E00060C9C /* Assets.xcassets */; };
 		D9EBF8CA23414E9E00060C9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EBF8C823414E9E00060C9C /* LaunchScreen.storyboard */; };
+		D9F81753238A126E00C74ECB /* QRCodeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F81752238A126E00C74ECB /* QRCodeDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		D9EBF8C623414E9E00060C9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9EBF8C923414E9E00060C9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9EBF8CB23414E9E00060C9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9F81752238A126E00C74ECB /* QRCodeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeDetails.swift; sourceTree = "<group>"; };
 		F6C3EB35108040851FDD44E3 /* Pods_InventoryProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventoryProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				D9460450234E721800280D77 /* ItemInputController.swift */,
 				D9651CE72353B5DA00755D58 /* QRcodeScanner.swift */,
 				D9E09309235CD6DE00502E46 /* DataStore.swift */,
+				D9F81752238A126E00C74ECB /* QRCodeDetails.swift */,
 				D9EBF8C323414E9D00060C9C /* Main.storyboard */,
 				D9EBF8C623414E9E00060C9C /* Assets.xcassets */,
 				D9EBF8C823414E9E00060C9C /* LaunchScreen.storyboard */,
@@ -236,6 +239,7 @@
 				D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */,
 				D9651CE82353B5DA00755D58 /* QRcodeScanner.swift in Sources */,
 				D9460451234E721800280D77 /* ItemInputController.swift in Sources */,
+				D9F81753238A126E00C74ECB /* QRCodeDetails.swift in Sources */,
 				D9759C2B236E553A005DC408 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

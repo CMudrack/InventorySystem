@@ -23,26 +23,14 @@ class DataStore {
     // Variable to facilitate data transfer from ItemInputController to ViewController
     var itemAdded = false
     
-    // Variable to hold data from QRCode Scanner
-    var qrCodeInput: String = "" {
-        didSet {
-            print("\(qrCodeInput)")
-        }
-    }
     // Dictionary to hold keyvalue pares for QR Codes
     var qrDict: [Int: String] = [:]
     
     // Temporary list. Will be changed to Firebase 
     var chemNameList: [String] = [] {
         didSet {
-            itemAdded = true
-            //ref.child("Chemicals").setValue(chemNameList)
-//            guard let key = ref.child("Chemicals").childByAutoId().key else {return}
-//            let addedChemical = [chemNameList.last : chemQuantityList.last]
-//            let childUpdates = ["/Chemicals/\(key)": addedChemical]
-//            ref.updateChildValues(childUpdates)
-            
-            ref.child("Chemicals").childByAutoId().setValue(chemNameList.last)
+            itemAdded = true            
+            //chemNameList.sort()
         }
     }
     var chemQuantityList: [Int] = [] {
@@ -51,24 +39,33 @@ class DataStore {
         }
     }
     
-    
     func configure() {
         let chemicalRef = ref.child("Chemicals")
-        databaseHandle = chemicalRef.observe(.childAdded) { (snap) in
-            let chemical = snap.value as? String
-            
-            if let actualChemical = chemical {
-                self.chemNameList.append(actualChemical)
-            }
-        }
         
-        itemAdded = true
-//        chemicalRef.observe(.value) { (snap) in
-//
-//            for child in snap.children {
-//                print("this is a child: \(child)")
-//
-//            }
-//        }
+        let connectedRef = Database.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+          if snapshot.value as? Bool ?? false {
+            print("Connected")
+          } else {
+            print("Not connected")
+          }
+        })
+        
+        // This site helped with this https://stackoverflow.com/questions/47115273/getting-list-of-items-from-firebase-swift
+        chemicalRef.observeSingleEvent(of: .value,  with: { snap in
+            for child in snap.children{
+                let snap = child as! DataSnapshot
+                let snapInfo = snap.value as! [String : Any]
+                let name = snapInfo["name"] as! String
+                let quantity = snapInfo["quantity"]
+                print("name is \(name)")
+            
+                self.chemNameList.append(name)
+            
+                if let unwrappedQuantity = quantity {
+                    self.chemQuantityList.append(unwrappedQuantity as! Int)
+                }
+            }
+        })
     }
 }

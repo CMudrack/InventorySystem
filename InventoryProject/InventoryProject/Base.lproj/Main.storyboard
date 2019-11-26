@@ -172,43 +172,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="My1-8a-L8U">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="My1-8a-L8U">
                                 <rect key="frame" x="20" y="108" width="374" height="734"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zyr-RI-JCG">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-w6-2VX">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rv4-YO-Xwo">
-                                                <rect key="frame" x="78" y="0.0" width="296" height="20.5"/>
+                                                <rect key="frame" x="78" y="0.0" width="296" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cFx-dm-WF7">
-                                        <rect key="frame" x="0.0" y="20.5" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="37" width="374" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-x9-I1T">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-jg-0Dl">
-                                                <rect key="frame" x="78" y="0.0" width="296" height="20.5"/>
+                                                <rect key="frame" x="78" y="0.0" width="296" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D00-AB-6bj">
-                                        <rect key="frame" x="0.0" y="41" width="374" height="693"/>
+                                        <rect key="frame" x="0.0" y="74" width="374" height="660"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6n-1m-ENq">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="660"/>
+                                                <state key="normal" title="View SDS"/>
+                                                <connections>
+                                                    <segue destination="8ec-fv-NpL" kind="show" identifier="PDFDetailsSeque" id="K84-VD-9Uf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -235,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kz-Ok-B86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="806" y="781"/>
+            <point key="canvasLocation" x="805.79710144927537" y="780.80357142857144"/>
         </scene>
         <!--Item Input-->
         <scene sceneID="7DP-Ko-G1C">
@@ -332,10 +341,29 @@
                         <viewLayoutGuide key="safeArea" id="Fro-YX-LtV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scan QR Code" id="V7I-mv-jQ4"/>
+                    <connections>
+                        <segue destination="8ec-fv-NpL" kind="show" identifier="QRCodeSegue" id="qlY-YC-D5w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWe-Ne-15G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2651" y="25"/>
+        </scene>
+        <!--Code Details-->
+        <scene sceneID="vQf-cg-iJX">
+            <objects>
+                <viewController id="8ec-fv-NpL" customClass="QRCodeDetails" customModule="InventoryProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tGj-5t-KEf" customClass="qr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="JDU-6K-2gK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lg9-on-gZx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFL-Db-Awc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2641" y="754"/>
         </scene>
         <!--Main Navigation Controller-->
         <scene sceneID="iH9-QG-JN4">
@@ -356,4 +384,7 @@
             <point key="canvasLocation" x="-61" y="25"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qlY-YC-D5w"/>
+    </inferredMetricsTieBreakers>
 </document>

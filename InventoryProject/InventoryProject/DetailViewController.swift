@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import Firebase
 import UIKit
 
 class DetailViewController: UIViewController {
-   
+    
+    let storage = Storage.storage(url: "gs://chemreserve-d952f.appspot.com").reference()
+
     var chemicalName: String? {
         didSet {
             navigationItem.title = chemicalName
@@ -29,4 +32,16 @@ class DetailViewController: UIViewController {
         chemQuantityText.text = chemicalQuantity
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        guard identifier == "PDFDetailsSeque" else {
+            return
+        }
+        
+        let QRCodeDetails = segue.destination as! QRCodeDetails
+        QRCodeDetails.chemicalName = navigationItem.title
+    }
 }

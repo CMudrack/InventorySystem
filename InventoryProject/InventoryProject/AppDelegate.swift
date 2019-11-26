@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
         DataStore.sharedInstance.configure()
     }
 

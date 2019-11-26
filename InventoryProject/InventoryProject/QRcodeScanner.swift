@@ -13,6 +13,8 @@ import AVFoundation
 
 class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
+    var qrValue: String?
+    
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var camera: AVCaptureDevice?
@@ -94,17 +96,32 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
         // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        
-        // Counter to ensure qrCode variable only gets set once
-        
+
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
             // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             
-            DataStore.sharedInstance.qrCodeInput = metadataObj.stringValue!
-            _ = navigationController?.popViewController(animated: true)
+            qrValue = metadataObj.stringValue!
+            performSegue(withIdentifier: "QRCodeSegue", sender: nil)
+            captureSession.stopRunning()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            return
+        }
+        
+        guard identifier == "QRCodeSegue" else {
+            return
+        }
+        
+        let QRCodeDetails = segue.destination as! QRCodeDetails
+        QRCodeDetails.chemicalName = qrValue
+    }
+    
 }
+
+

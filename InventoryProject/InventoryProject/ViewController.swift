@@ -21,10 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         if DataStore.sharedInstance.itemAdded == true {
-            CardTableView.beginUpdates()
-            CardTableView.insertRows(at: [NSIndexPath(row: DataStore.sharedInstance.chemNameList.count-1, section: 0) as IndexPath]  , with: .automatic)
-            CardTableView.insertRows(at: [NSIndexPath(row: DataStore.sharedInstance.chemQuantityList.count-1, section: 0) as IndexPath]  , with: .automatic)
-            CardTableView.endUpdates()
+            CardTableView.reloadData()
         }
         DataStore.sharedInstance.itemAdded = false
     }
@@ -64,6 +61,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let name = DataStore.sharedInstance.chemNameList[indexPath.row]
         let quantity = DataStore.sharedInstance.chemQuantityList[indexPath.row]
+        print(quantity)
+        print(name)
         
         detailViewController.chemicalName = name
         detailViewController.chemicalQuantity = "\(quantity)"
