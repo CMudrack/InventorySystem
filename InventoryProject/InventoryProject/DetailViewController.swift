@@ -14,23 +14,26 @@ class DetailViewController: UIViewController {
     
     let storage = Storage.storage(url: "gs://chemreserve-d952f.appspot.com").reference()
     var ref: DatabaseReference! = Database.database().reference()
-
-    var chemicalName: String? {
-        didSet {
-            navigationItem.title = chemicalName
-        }
-    }
     
-    var chemicalQuantity: String?
+    var chemical: Chemical?
     
     @IBOutlet var chemNameLabel: UILabel!
     @IBOutlet var chemQuantityLabel: UILabel!
     @IBOutlet var chemNameText: UITextField!
     @IBOutlet var chemQuantityText: UITextField!
+    @IBOutlet var chemLocationText: UITextField!
+    @IBOutlet var chemLocationLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        chemNameText.text = chemicalName
-        chemQuantityText.text = chemicalQuantity
+        chemNameText.text = chemical?.name
+        
+        if let chemicalQuantity = chemical?.quantity {
+             chemQuantityText.text = "\(chemicalQuantity)"
+        }
+    
+        chemLocationText.text = chemical?.location
+       
+        navigationItem.title = chemical?.name
     }
     
     
@@ -40,8 +43,11 @@ class DetailViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-            self.ref.child("Chemicals").child(self.chemNameLabel.text!).setValue(nil)
-            DataStore.sharedInstance.itemAdded == true
+            self.ref.child("Chemicals").child(self.navigationItem.title!).removeValue()
+            DataStore.sharedInstance.itemAdded = true
+            if let index = DataStore.sharedInstance.chemicalList.firstIndex(of: self.chemical!) {
+                DataStore.sharedInstance.chemicalList.remove(at: index)
+            }
             self.navigationController?.popViewController(animated: true)
         }
         noPDFAlert.addAction(cancelAction)

@@ -26,20 +26,15 @@ class DataStore {
     // Dictionary to hold keyvalue pares for QR Codes
     var qrDict: [Int: String] = [:]
     
-    // Temporary list. Will be changed to Firebase 
-    var chemNameList: [String] = [] {
-        didSet {
-            itemAdded = true            
-            //chemNameList.sort()
-        }
-    }
-    var chemQuantityList: [Int] = [] {
+    var chemicalList: [Chemical] = []{
         didSet {
             itemAdded = true
+            chemicalList.sort()
         }
     }
     
     func configure() {
+        
         let chemicalRef = ref.child("Chemicals")
         
         let connectedRef = Database.database().reference(withPath: ".info/connected")
@@ -53,18 +48,15 @@ class DataStore {
         
         // This site helped with this https://stackoverflow.com/questions/47115273/getting-list-of-items-from-firebase-swift
         chemicalRef.observeSingleEvent(of: .value,  with: { snap in
+
             for child in snap.children{
                 let snap = child as! DataSnapshot
                 let snapInfo = snap.value as! [String : Any]
                 let name = snapInfo["name"] as! String
-                let quantity = snapInfo["quantity"]
-                print("name is \(name)")
-            
-                self.chemNameList.append(name)
-            
-                if let unwrappedQuantity = quantity {
-                    self.chemQuantityList.append(unwrappedQuantity as! Int)
-                }
+                let quantity = snapInfo["quantity"] as! Int
+                let location = snapInfo["location"] as! String
+                
+                self.chemicalList.append(Chemical(name: name, quantity: quantity, location: location))
             }
         })
     }

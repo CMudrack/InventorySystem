@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if DataStore.sharedInstance.itemAdded == true {
             CardTableView.reloadData()
         }
@@ -28,13 +28,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //Function to set number of cells in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataStore.sharedInstance.chemNameList.count
+        return DataStore.sharedInstance.chemicalList.count
     }
     
     //Funtion to add CardCell to TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChemCell", for: indexPath)
-        cell.textLabel?.text = DataStore.sharedInstance.chemNameList[indexPath.row]
+        cell.textLabel?.text = DataStore.sharedInstance.chemicalList[indexPath.row].name
         return cell
     }
 
@@ -59,13 +59,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         
-        let name = DataStore.sharedInstance.chemNameList[indexPath.row]
-        let quantity = DataStore.sharedInstance.chemQuantityList[indexPath.row]
-        print(quantity)
-        print(name)
+        let chemical = DataStore.sharedInstance.chemicalList[indexPath.row]
         
-        detailViewController.chemicalName = name
-        detailViewController.chemicalQuantity = "\(quantity)"
+        detailViewController.chemical = chemical
     }
 }
 

@@ -15,6 +15,7 @@
 		D9651CE82353B5DA00755D58 /* QRcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9651CE72353B5DA00755D58 /* QRcodeScanner.swift */; };
 		D9651CEB2353B68300755D58 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9651CEA2353B68300755D58 /* AVFoundation.framework */; };
 		D9759C2B236E553A005DC408 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9759C2A236E553A005DC408 /* DetailViewController.swift */; };
+		D994F47C238DFE8E00A58FA0 /* Chemical.swift in Sources */ = {isa = PBXBuildFile; fileRef = D994F47B238DFE8E00A58FA0 /* Chemical.swift */; };
 		D9E0930A235CD6DE00502E46 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E09309235CD6DE00502E46 /* DataStore.swift */; };
 		D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EBF8BF23414E9D00060C9C /* AppDelegate.swift */; };
 		D9EBF8C223414E9D00060C9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EBF8C123414E9D00060C9C /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		D9651CE72353B5DA00755D58 /* QRcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeScanner.swift; sourceTree = "<group>"; };
 		D9651CEA2353B68300755D58 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D9759C2A236E553A005DC408 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D994F47B238DFE8E00A58FA0 /* Chemical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chemical.swift; sourceTree = "<group>"; };
 		D9E09309235CD6DE00502E46 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		D9EBF8BC23414E9D00060C9C /* InventoryProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EBF8BF23414E9D00060C9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				D9651CE72353B5DA00755D58 /* QRcodeScanner.swift */,
 				D9E09309235CD6DE00502E46 /* DataStore.swift */,
 				D9F81752238A126E00C74ECB /* QRCodeDetails.swift */,
+				D994F47B238DFE8E00A58FA0 /* Chemical.swift */,
 				D9EBF8C323414E9D00060C9C /* Main.storyboard */,
 				D9EBF8C623414E9E00060C9C /* Assets.xcassets */,
 				D9EBF8C823414E9E00060C9C /* LaunchScreen.storyboard */,
@@ -239,6 +242,7 @@
 				D9EBF8C023414E9D00060C9C /* AppDelegate.swift in Sources */,
 				D9651CE82353B5DA00755D58 /* QRcodeScanner.swift in Sources */,
 				D9460451234E721800280D77 /* ItemInputController.swift in Sources */,
+				D994F47C238DFE8E00A58FA0 /* Chemical.swift in Sources */,
 				D9F81753238A126E00C74ECB /* QRCodeDetails.swift in Sources */,
 				D9759C2B236E553A005DC408 /* DetailViewController.swift in Sources */,
 			);

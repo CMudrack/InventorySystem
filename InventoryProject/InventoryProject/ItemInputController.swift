@@ -18,23 +18,22 @@ class ItemInputController: UIViewController {
     
     @IBOutlet weak var ItemNameTextField: UITextField!
     @IBOutlet weak var ItemQuantityTextField: UITextField!
-     
+    @IBOutlet var ItemLocationTextField: UITextField!
     var ref: DatabaseReference! = Database.database().reference()
     
     
     // Function to check if ensure required textfields have been filled out and utilizes delegate to send data back to ViewController
     @IBAction func AddItemSubmit(_ sender: Any) {
 
-        if ItemNameTextField.text != "" && ItemQuantityTextField.text != "" {
+        if ItemNameTextField.text != "" && ItemQuantityTextField.text != "" && ItemLocationTextField.text != "" {
             let ItemQuantityAsInt = Int(ItemQuantityTextField.text!)!
             
-            let chemical = ["name": ItemNameTextField.text as Any,
-            "quantity": ItemQuantityAsInt] as [String : Any]
+            let chemicalObject = Chemical(name: ItemNameTextField.text!, quantity: ItemQuantityAsInt, location: ItemLocationTextField.text!)
             
-            //Save name to list
-            DataStore.sharedInstance.chemNameList.append(ItemNameTextField.text!)
-            // Add quantity to list
-            DataStore.sharedInstance.chemQuantityList.append(ItemQuantityAsInt)
+            DataStore.sharedInstance.chemicalList.append(chemicalObject)
+            
+            let chemical = ["name": chemicalObject.name as Any, "quantity": chemicalObject.quantity, "location": chemicalObject.location] as [String : Any]
+            
             // Save name and quantity to Firebase Database
             ref.child("Chemicals").child(ItemNameTextField.text!).setValue(chemical)
             
