@@ -50,7 +50,6 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
     }
     
-    
     func setupCaptureSession() {
         captureSession.sessionPreset = AVCaptureSession.Preset.high
         camera = AVCaptureDevice.default(for: .video)
@@ -68,7 +67,9 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
         
          // Initialize QR Code Frame to highlight the QR code
-         qrCodeFrameView = UIView()
+        DispatchQueue.main.async {
+            self.qrCodeFrameView = UIView()
+        }
 
          if let qrCodeFrameView = qrCodeFrameView {
              qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
@@ -77,12 +78,14 @@ class QRcodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
              view.bringSubviewToFront(qrCodeFrameView)
          }
         
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        videoPreviewLayer?.frame = view.bounds
-        videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-        view.layer.insertSublayer(videoPreviewLayer!, at: 0)
-        captureSession.startRunning()
+        DispatchQueue.main.async {
+            self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
+            self.videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            self.videoPreviewLayer?.frame = self.view.bounds
+            self.videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+            self.view.layer.insertSublayer(self.videoPreviewLayer!, at: 0)
+            self.captureSession.startRunning()
+        }
     }
     
     // Got function from https://www.appcoda.com/intermediate-swift-tips/qrcode-reader.html

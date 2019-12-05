@@ -51,11 +51,19 @@
                                     <action selector="SubmitTapped:" destination="W2E-bV-qX0" eventType="touchUpInside" id="Rhq-8f-I26"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoMakr_2nN4nP.png" translatesAutoresizingMaskIntoConstraints="NO" id="046-JN-BLf">
+                                <rect key="frame" x="123.5" y="54" width="167" height="79"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="167" id="E0q-Sy-v3h"/>
+                                    <constraint firstAttribute="height" constant="79" id="gFX-6B-DUz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="L52-Es-LyT" firstAttribute="top" secondItem="1kF-fM-qnY" secondAttribute="top" constant="122" id="4F1-O7-qYx"/>
+                            <constraint firstItem="046-JN-BLf" firstAttribute="centerX" secondItem="1kF-fM-qnY" secondAttribute="centerX" id="Gl9-1O-VBI"/>
                             <constraint firstItem="c7J-Sw-u15" firstAttribute="top" secondItem="cbo-UC-ehL" secondAttribute="bottom" constant="100" id="Nw3-3Z-zCG"/>
                             <constraint firstItem="cbo-UC-ehL" firstAttribute="centerX" secondItem="1kF-fM-qnY" secondAttribute="centerX" id="Orj-RS-TXo"/>
                             <constraint firstItem="wsn-KJ-cO9" firstAttribute="top" secondItem="2WD-1b-P1i" secondAttribute="bottom" constant="50" id="PGS-CH-hFQ"/>
@@ -65,6 +73,7 @@
                             <constraint firstItem="cbo-UC-ehL" firstAttribute="top" secondItem="L52-Es-LyT" secondAttribute="bottom" constant="10" id="TZD-mB-1zT"/>
                             <constraint firstItem="wsn-KJ-cO9" firstAttribute="centerX" secondItem="1kF-fM-qnY" secondAttribute="centerX" id="YVe-zd-0PV"/>
                             <constraint firstItem="2WD-1b-P1i" firstAttribute="top" secondItem="c7J-Sw-u15" secondAttribute="bottom" constant="10" id="oW4-lE-5kD"/>
+                            <constraint firstItem="046-JN-BLf" firstAttribute="top" secondItem="1kF-fM-qnY" secondAttribute="top" constant="10" id="y1f-Vd-v8r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1kF-fM-qnY"/>
                         <connections>
@@ -145,16 +154,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="05z-x7-fOx">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="SrL-fo-O4U">
-                            <connections>
-                                <segue destination="MxO-hW-Nrx" kind="show" id="mFG-97-pZu"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="bk5-tP-6kR">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="bk5-tP-6kR">
                             <connections>
                                 <action selector="LogoutTapped:" destination="BYZ-38-t0r" id="TT2-hO-V68"/>
                             </connections>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="add" id="SrL-fo-O4U">
+                                <connections>
+                                    <segue destination="MxO-hW-Nrx" kind="show" id="mFG-97-pZu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="camera" id="ERO-tl-CJs">
+                                <connections>
+                                    <segue destination="LAr-Kx-VWs" kind="show" id="VAo-9Q-hPY"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="CardTableView" destination="6Oi-gd-CzW" id="XVh-SF-IZK"/>
@@ -162,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="805.79710144927537" y="24.776785714285712"/>
+            <point key="canvasLocation" x="806" y="3"/>
         </scene>
         <!--Title-->
         <scene sceneID="IPQ-k2-b1e">
@@ -361,13 +377,7 @@
                             <outletCollection property="gestureRecognizers" destination="2z7-bu-8hW" appends="YES" id="M1D-Xl-fuy"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Item Input" id="c9o-xM-dfw">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="camera" id="ERO-tl-CJs">
-                            <connections>
-                                <segue destination="LAr-Kx-VWs" kind="show" id="VAo-9Q-hPY"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Item Input" id="c9o-xM-dfw"/>
                     <connections>
                         <outlet property="ItemLocationTextField" destination="2SB-Zr-F7w" id="kaY-jV-ml3"/>
                         <outlet property="ItemNameTextField" destination="ebv-EQ-PDV" id="FYt-M6-eUd"/>
@@ -437,6 +447,9 @@
             <point key="canvasLocation" x="-61" y="25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LogoMakr_2nN4nP.png" width="400" height="184"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="K84-VD-9Uf"/>
     </inferredMetricsTieBreakers>
